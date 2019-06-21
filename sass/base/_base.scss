@@ -1,0 +1,291 @@
+@import '../sass/base/normalize.css';
+
+/*================ Mixins ================*/
+
+/*======== Grid system ========*/
+
+.container {
+	margin: 0 auto;
+	max-width: $container-max-width;
+	padding: 0 $container-padding;
+	@extend .clearfix;
+}
+
+/*==== Normal grid ====*/
+
+@mixin grid($columns, $padding, $columnBreak: null) {
+	$minimum: 100 / $columns;
+
+	$grid-slug: grid;
+	$grid-of-slug: grid-of;
+
+	$col-slug: col;
+	$col-large-slug: col-large;
+	$col-medium-slug: col-medium;
+	$col-small-slug: col-small;
+	$col-extra-small-slug: col-extra-small;
+
+	$pull-right-slug: pull-right;
+	$pull-right-large-slug: pull-right-large;
+	$pull-right-medium-slug: pull-right-medium;
+	$pull-right-small-slug: pull-right-small;
+	$pull-right-extra-small-slug: pull-right-extra-small;
+
+	$pull-left-slug: pull-left;
+	$pull-left-large-slug: pull-left-large;
+	$pull-left-medium-slug: pull-left-medium;
+	$pull-left-small-slug: pull-left-small;
+	$pull-left-extra-small-slug: pull-left-extra-small;
+
+	&.grid-row {
+		margin: 0 ($padding/(-2));
+	}
+
+	@if ($columnBreak) {
+		.no-flexbox & .grid .grid-col:nth-child(#{$columnBreak}n+1) {
+			clear: left;
+		}
+	}
+
+	.#{$grid-of-slug}-#{$columns} {
+		> .grid-col,
+		> .slick-list > .slick-track > .grid-col {
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			padding-left: $padding / 2;
+			padding-right: $padding / 2;
+		}
+
+		@for $i from 0 through $columns {
+			$width: $minimum * $i  * 1%;
+
+			> .#{$col-slug}-#{$i},
+			> .slick-list > .slick-track > .#{$col-slug}-#{$i} {
+				@include flex-basis($width);
+			}
+
+			@media (min-width: $medium-max-width + 1) and (max-width: $large-max-width) {
+				> .grid-col.#{$col-large-slug}-#{$i},
+				> .slick-list > .slick-track > .grid-col.#{$col-large-slug}-#{$i} {
+					@include flex-basis($width);
+				}
+			}
+
+			@media (min-width: $small-max-width + 1) and (max-width: $medium-max-width) {
+				> .grid-col.#{$col-medium-slug}-#{$i},
+				> .slick-list > .slick-track > .grid-col.#{$col-medium-slug}-#{$i} {
+					@include flex-basis($width);
+				}
+			}
+
+			@media (min-width: $extra-small-max-width + 1) and (max-width: $small-max-width) {
+				> .grid-col.#{$col-small-slug}-#{$i},
+				> .slick-list > .slick-track > .grid-col.#{$col-small-slug}-#{$i} {
+					@include flex-basis($width);
+				}
+			}
+
+			@media (max-width: $extra-small-max-width) {
+				> .grid-col.#{$col-extra-small-slug}-#{$i},
+				> .slick-list > .slick-track > .grid-col.#{$col-extra-small-slug}-#{$i} {
+					@include flex-basis($width);
+				}
+			}
+
+			> .#{$pull-left-slug}-#{$i},
+			> .slick-list > .slick-track > .#{$pull-left-slug}-#{$i} {
+				margin-right: $width;
+			}
+
+			@media (min-width: $medium-max-width + 1) and (max-width: $large-max-width) {
+				> .#{$pull-left-large-slug}-#{$i},
+				> .slick-list > .slick-track > .#{$pull-left-large-slug}-#{$i} {
+					margin-right: $width !important;
+				}
+			}
+
+			@media (min-width: $small-max-width + 1) and (max-width: $medium-max-width) {
+				> .#{$pull-left-medium-slug}-#{$i},
+				> .slick-list > .slick-track > .#{$pull-left-medium-slug}-#{$i} {
+					margin-right: $width !important;
+				}
+			}
+
+			@media (min-width: $extra-small-max-width + 1) and (max-width: $small-max-width) {
+				> .#{$pull-left-small-slug}-#{$i},
+				> .slick-list > .slick-track > .#{$pull-left-small-slug}-#{$i} {
+					margin-right: $width !important;
+				}
+			}
+
+			@media (max-width: $extra-small-max-width) {
+				> .#{$pull-left-extra-small-slug}-#{$i},
+				> .slick-list > .slick-track > .#{$pull-left-extra-small-slug}-#{$i} {
+					margin-right: $width !important;
+				}
+			}
+
+			> .#{$pull-right-slug}-#{$i},
+			> .slick-list > .slick-track > .#{$pull-right-slug}-#{$i} {
+				margin-left: $width;
+			}
+
+			@media (min-width: $medium-max-width + 1) and (max-width: $large-max-width) {
+				> .#{$pull-right-large-slug}-#{$i},
+				> .slick-list > .slick-track > .#{$pull-right-large-slug}-#{$i} {
+					margin-left: $width !important;
+				}
+			}
+
+			@media (min-width: $small-max-width + 1) and (max-width: $medium-max-width) {
+				> .#{$pull-right-medium-slug}-#{$i},
+				> .slick-list > .slick-track > .#{$pull-right-medium-slug}-#{$i} {
+					margin-left: $width !important;
+				}
+			}
+
+			@media (min-width: $extra-small-max-width + 1) and (max-width: $small-max-width) {
+				> .#{$pull-right-small-slug}-#{$i},
+				> .slick-list > .slick-track > .#{$pull-right-small-slug}-#{$i} {
+					margin-left: $width !important;
+				}
+			}
+
+			@media (max-width: $extra-small-max-width) {
+				> .#{$pull-right-extra-small-slug}-#{$i},
+				> .slick-list > .slick-track > .#{$pull-right-extra-small-slug}-#{$i} {
+					margin-left: $width !important;
+				}
+			}
+		}
+	}
+
+	.no-flexbox & .#{$grid-of-slug}-#{$columns} {
+		> .grid-col,
+		> .slick-list > .slick-track > .grid-col {
+			float: left;
+		}
+
+		@for $i from 0 through $columns {
+			$width: $minimum * $i  * 1%;
+
+			> .#{$col-slug}-#{$i},
+			> .slick-list > .slick-track > .#{$col-slug}-#{$i} {
+				width: $width;
+
+				@media (max-width: $large-max-width) {
+					> .grid-col.#{$col-large-slug}-#{$i},
+					> .slick-list > .slick-track > .grid-col.#{$col-large-slug}-#{$i} {
+						width: $width;
+					}
+				}
+
+				@media (min-width: $small-max-width + 1) and (max-width: $medium-max-width) {
+					> .grid-col.#{$col-medium-slug}-#{$i},
+					> .slick-list > .slick-track > .grid-col.#{$col-medium-slug}-#{$i} {
+						width: $width;
+					}
+				}
+
+				@media (min-width: $extra-small-max-width + 1) and (max-width: $small-max-width) {
+					> .grid-col.#{$col-small-slug}-#{$i},
+					> .slick-list > .slick-track > .grid-col.#{$col-small-slug}-#{$i} {
+						width: $width;
+					}
+				}
+
+				@media (max-width: $extra-small-max-width) {
+					> .grid-col.#{$col-extra-small-slug}-#{$i},
+					> .slick-list > .slick-track > .grid-col.#{$col-extra-small-slug}-#{$i} {
+						width: $width;
+					}
+				}
+			}
+		}
+	}
+}
+
+.grid-row {
+	clear: both;
+
+	.grid {
+		@include display(flex);
+		@include flex-wrap(wrap);
+
+		@-moz-document url-prefix() {
+			flex: 1;
+		}
+
+		.no-flexbox & {
+			display: block;
+		}
+
+		.slider-products & {
+			@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+				/* IE10+ */
+
+				@include display(block);
+			}
+		}
+	}
+}
+
+.columns {
+	display: table;
+	width: 100%;
+}
+
+.global-grid {
+	@include grid(12, $container-padding * 2);
+}
+
+/*================ Helpers ================*/
+
+/* Source: http://nicolasgallagher.com/micro-clearfix-hack/ */
+.clearfix {
+	&:before,
+	&:after {
+		content: ' ';
+		display: table;
+	}
+
+	&:after {
+		clear: both;
+	}
+
+	*zoom: 1;
+}
+
+.full_width {
+	display: block !important;
+}
+
+img.full_width {
+	width: 100%;
+	height: auto;
+}
+
+/*================ Common elements ================*/
+
+body {
+	color: $main-text-color;
+	font-family: $font-family-main;
+	font-size: $font-size-base;
+	margin: 0;
+	position: relative;
+}
+
+a {
+	color: $complementary-color;
+	text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+	margin-top: 0;
+}

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Guía de front-end para Simbel</title>
+
+        <meta charset="utf-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+
+        <link rel="stylesheet" type="text/css" href="css/styles.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Guía de front-end para Simbel</h1>
+
+            <div class="table-of-contents">
+                <h2>Tabla de contenidos</h2>
+
+                <ol>
+
+                    <li><a href="#tecnologias">Tecnologías</a></li>
+
+                    <li><a href="#organizacion">Organización</a></li>
+
+                    <li><a href="#instlacion">Instalación</a></li>
+
+                    <li><a href="#ejecucion">Ejecución</a></li>
+
+                    <li><a href="#modulos">Módulos</a></li>
+
+                    <li><a href="#maquetado-y-programacion">Maquetado y programación</a>
+                        <ol>
+                            <li><a href="#para-editar-html-y-php">Para editar HTML/PHP</a></li>
+
+                            <li><a href="#para-editar-sass-css-javascript-e-imagenes">Para editar Sass/CSS, JavaScript e imágenes</a></li>
+                        </ol>
+                    </li>
+
+                    <li><a href="#el-framework">El framework</a>
+                        <ol>
+                            <li><a href="#sistema-de-archivos">Sistema de archivos</a></li>
+
+                            <li><a href="#sistema-de-grilla">Sistema de grilla</a></li>
+
+                            <li><a href="#helpers">Helpers</a>
+                                <ol>
+                                    <li><a href="#visibilidad">Visibilidad</a></li>
+
+                                    <li><a href="#accesibilidad">Accesibilidad</a></li>
+                                </ol>
+                            </li>
+
+                            <li><a href="#componentes">Componentes</a>
+                                <ol>
+                                    <li><a href="#header">Header</a></li>
+                                </ol>
+                            </li>
+
+                            <li><a href="#recomendaciones">Recomendaciones</a></li>
+                        </ol>
+                    </li>
+
+                    <li><a href="#buenas-practicas">Buenas prácticas</a></li>
+                </ol>
+            </div>
+
+
+            <h2 id="tecnologias">Tecnologías</h2>
+
+<p>A continuación se detallan las principales tecnologías con las que trabaja la plataforma Simbel:</p>
+
+<ol>
+    <li><a href="http://codeigniter.com/">Codeigniter 3.0.0</a></li>
+    <li><a href="https://laravel.com/docs/5.0/templates">Blade PHP</a></li>
+    <li><a href="https://blog.jquery.com/2016/05/20/jquery-1-12-4-and-2-2-4-released/">Jquery V 1.12.4</a></li>
+    <li><a href="https://kenwheeler.github.io/slick/">Slick JS</a></li>
+    <li><a href="https://jqueryvalidation.org/">Jquery Validate</a></li>
+    <li><a href="https://twitter.github.io/typeahead.js/">Typeahead.js</a></li>
+    <li><a href="https://github.com/Mythli/jquery.ytLoad">Jquery ytLoad</a></li>
+    <li><a href="https://ricostacruz.com/jquery.transit/">Jquery transit</a></li>
+</ol>
+
+            <h2 id="organizacion">Organización</h2>
+            <p>La estructura del proyecto es la siguiente:</p>
+
+
+
+            <h2 id="instlacion">Instalación</h2>
+            <p>Para trabajar en la plataforma Simbel debemos montar un infrastructura LAMP:</p>
+            <ol>
+                <li>Linux como sistema operativo</li>
+                <li>Apache como servidor web</li>
+                <li>MySQL/MariaDB, el gestor de bases de datos</li>
+                <li> PHP como lenguaje de programación.</li>
+            </ol>    
+            <p>* Recomandamos utilizar la herramienta <a href="https://www.apachefriends.org/es/index.html">XAMPP</a> que nos facilita toda esta estructura y es de fácil configuración para trabajar localmente.</p>
+
+            <p>Acceso al código</p>
+            <p>La persona encargada de llevar adelante las modificaciones del codigo recibirá acceso al repositorio del proyecto que se encuentra alojoado en <a href="https://bitbucket.org/">Bitbucket</a>, es necesario para esto disponer de una cuenta registrada en el sitio.</p>
+            
+            <p>Ambientes de trabajo</p>
+            <p>Los posibles ambientes de trabajos en los que puede encontrarse la plataforma son:</p>
+<ol>
+    <li>Development : Entorno o ambiente local.</li>
+    <li>Testing: ambiente para realizar test alojado dentro de los servidores de Simbel.</li>
+    <li>Stage: En general es donde el cliente realiza pruebas antes de subir cambios a su sitio productivo.</li>
+    <li>Production: ambiente productivo.</li>
+</ol>
+<p>Para definir en que ambiente queremos trabajar debemos crear un archivo con el nombre "config.env" dentro de applications, y dentro del mismo definir el ambiente de la siguiente forma:<p>
+
+<p>Ambiente local</p>
+<pre>
+<code>
+<span class="code">development</span>
+</code>
+</pre>
+
+<p>Ambiente de Testing</p>
+<pre>
+<code>
+<span class="code">testing</span>
+</code>
+</pre>
+
+<p>Ambiente de Stage</p>
+<pre>
+<code>
+<span class="code">stage</span>
+</code>
+</pre>
+
+<p>Ambiente de Producción</p>
+<pre>
+<code>
+<span class="code">production</span>
+</code>
+</pre>
+
+<p>Una vez que se defina el mabiente de trabajo la aplicación accedera a los archivos de configuración que corresponda, la configuración de los mismos se encuentra dentro de aplication/frontend/config</p>
+
+<pre>
+<code>
+<span class="code">-applications</span>
+<span class="code">--frontend</span>
+<span class="code">---config</span>
+<span class="code">--- development</span>
+<span class="code">---- constants.php</span>
+<span class="code">--- testing</span>
+<span class="code">---- constants.php</span>
+<span class="code">--- stage</span>
+<span class="code">---- constants.php</span>
+<span class="code">--- production</span>
+<span class="code">---- constants.php</span>
+</code>
+</pre>
+
+<p>Cada archivo de constantes define los datos de accesos a la base de datos y el nombre del dominio del ambiente.</p>
+
+           <h2 id="ejecucion">Ejecución</h2>
+            <p>Para poder navegar por las tiendas localmente, debemos abrir el programa XAMPP y cliquear en Start para los módulos Apache y MySQL.</p>
+
+
+            <h2 id="maquetado-y-programacion">Maquetado y programación</h2>
+
+            <p>Para trabajar en un proyecto, abriremos el directorio raíz del mismo desde Sublime Text: File/Open Folder.... El árbol de carpetas aparecerá en la columna izquierda, y se verá aproximadamente así:</p>
+<pre>
+<code>
+<span class="code">.git</span>
+<span class="code">applications</span>
+<span class="code">public_html</span>
+<span class="code">.gitignore</span>
+<span class="code">README.md</span>
+</code>
+</pre>
+
+            <p>Una vez que hayamos abierto la carpeta, dentro de las carpetas <span class="code">applications</span> y <span class="code">public_html</span> veremos muchos otros documentos y carpetas, con distintos niveles de profundidad. Pero vamos a profundizar únicamente en los más importantes para el desarrollo <em>front-end</em>: los que necesitamos para editar HTML/PHP, CSS/Sass, JavaScript e imágenes.</p>
+
+            <h3 id="para-editar-html-y-php">Para editar HTML/PHP</h3>
+
+<pre>
+<code>
+<span class="code">.git</span>
+<span class="code">applications</span>
+    <span class="code">frontend</span>
+        <span class="code">modules</span>
+            <span class="code">home</span>
+                <span class="code">views</span>
+                <span class="code">...</span>
+            <span class="code">layouts</span>
+                <span class="code">views</span>
+                <span class="code">...</span>
+            <span class="code">productos</span>
+                <span class="code">views</span>
+                <span class="code">...</span>
+            <span class="code">...</span>
+    <span class="code">system</span>
+    <span class="code">...</span>
+<span class="code">public_html</span>
+<span class="code">.gitignore</span>
+<span class="code">README.md</span>
+</code>
+</pre>
+
+            <p>Para editar el <em>markup</em> de las tiendas, en la mayoría de los casos vamos a necesitar trabajar en <span class="code">applications/frontend/modules</span>. Dentro de esta carpeta hay carpetas dedicadas a cada uno de los módulos que componen las interfaces de los sitios. Por ejemplo, la carpeta <span class="code">applications/frontend/modules/home</span> corresponde a la página Home, la carpeta <span class="code">applications/frontend/modules/productos</span> corresponde a las páginas de producto, la carpeta <span class="code">applications/frontend/modules/pages</span> corresponde a las páginas institucionales del sitio (como Nosotros), la carpeta <span class="code">applications/frontend/modules/lista</span> corresponde a las páginas de listado, la carpeta <span class="code">applications/frontend/modules/layouts</span> corresponde a los elementos de la estructura de la página (como el <em>header</em> y el <em>footer</em>), etc.</p>
+
+            <p>Dentro de cada una de esas carpetas, generalmente trabajaremos en los documentos PHP que figuran dentro de la carpeta <span class="code">views</span>. Por ejemplo, para editar la página Nosotros, editaremos el archivo <span class="code">applications/frontend/modules/pages/views/nosotros.blade.php</span>.</p>
+
+            <p>Sin embargo, en la mayoría de los casos es difícil darse cuenta a simple vista de cuál es el archivo que tenemos que editar. Lo más cómodo es identificar el fragmento de código que queremos cambiar y buscarlo dentro del proyecto. Por ejemplo, supongamos que queremos editar el texto de la página Nosotros. Vemos que el primer párrafo de ese texto empieza diciendo: «Nuestra firma cuenta con una trayectoria de más de 50 años [...]». Entonces podemos seguir estos pasos:</p>
+
+            <ol>
+                <li>Cliquear con el botón derecho sobre la carpeta raíz. Cliquear sobre Find in Folder...</li>
+
+                <li>Ingresar <em>Nuestra firma cuenta con una trayectoria de más de 50 años</em>. Cliquear sobre Find.</li>
+
+                <li>Se abrirá una página con los resultados de la búsqueda.</li>
+
+                <li>Cliquear sobre la frase que figure resaltada en el resultado indicado. Se abrirá el archivo que necesitamos.</li>
+            </ol>
+
+            <h3 id="para-editar-sass-css-javascript-e-imagenes">Para editar Sass/CSS, JavaScript e imágenes</h3>
+<pre>
+<code>
+<span class="code">.git</span>
+<span class="code">applications</span>
+<span class="code">public_html</span>
+    <span class="code">public</span>
+        <span class="code">css</span>
+        <span class="code">images</span>
+        <span class="code">js</span>
+        <span class="code">plugins</span>
+        <span class="code">sass</span>
+        <span class="code">...</span>
+    <span class="code">...</span>
+<span class="code">.gitignore</span>
+<span class="code">README.md</span>
+</code>
+</pre>
+            <p>Para editar los estilos, en los proyectos nuevos se debe trabajar sobre la carpeta <span class="code">sass</span>. Allí se encuentran los archivos Sass que serán compilados automáticamente en un solo archivo CSS, que será guardado en la carpeta css.</p>
+
+            <p>Para que los archivos Sass se compilen, es necesario tener instalado en el equipo un cliente de Sass. Actualmente se utiliza <a href="https://sass-lang.com/ruby-sass" target="_blank">Ruby Sass</a>, pero se recomienda dejar de usarlo porque está a punto de ser abandonado por sus desarrolladores. Si se elige esta opción, para compilar el Sass hay que abrir la línea de comandos, ubicarse en <span class="code">public_html/public</span> y ejecutar <span class="code">sass --watch sass:css</span>. Quedará corriendo un proceso que compilará los archivos automáticamente cada vez que los modifiquemos.</p>
+
+            <h2 id="el-framework">El framework</h2>
+
+            <p>Desde mediados de 2017, las interfaces de las tiendas Simbel se realizan sobre un <em>framework</em> de desarrollo <em>front-end</em> creado especialmente para la plataforma e inspirado en Bootstrap, que era la herramienta que se aplicaba hasta entonces. El nuevo sistema busca proveer una solución más liviana y flexible, ajustada a las necesidades particulares de nuestras tiendas, y aprovechar las características más modernas de CSS (como Bootstrap 4) sin dejar de garantizar una buena compatibilidad con navegadores antiguos (como Bootstrap 3).</p>
+
+            <p>Las principales dependencias del framework son Sass, jQuery y algunos plugins de terceros, como <a href="http://kenwheeler.github.io/slick/" target="_blank">Slick</a>.</p>
+
+           
+
+            <p>En este documento se utilizará como ejemplo el <em>framework</em> de <a href="https://www.murillo666.com.ar/" target="_blank">Murillo 666</a>.</p>
+
+
+            <h3 id="sistema-de-archivos">Sistema de archivos</h3>
+
+            <p>El <em>framework</em> está ubicado en la carpeta <span class="code">public</span>. A continuación se detallan los archivos que lo componen:</p>
+<pre>
+<code>
+<span class="code">.git</span>
+<span class="code">applications</span>
+<span class="code">public_html</span>
+    <span class="code">public</span>
+        <span class="code">css</span>
+            <span class="code">styles.css</span>: Es el archivo que contendrá todos los estilos del sitio (exceptuando, claro está, el carro). No debe modificarse, ya que se genera automáticamente al modificar los archivos Sass.
+            <span class="code">...</span>
+        <span class="code">images</span>
+            <span class="code">static</span>: Aquí se guardan las imágenes que forman parte del diseño del sitio, como el logo, las fotos de las páginas institucionales, etc.
+                        <span class="code">email</span>: Aquí se guardan las imágenes que forman parte de los newsletters
+                        <span class="code">icons</span>: Aquí se guardan específicamente íconos, generalmente en formato SVG
+                    <span class="code">...</span>
+        <span class="code">js</span>
+            <span class="code">custom</span>
+                <span class="code">head.js</span>: Scripts que se aplican al <em>header</em> (cabecera) del sitio
+                <span class="code">home.js</span>: Scripts que se aplican a la home del sitio
+                <span class="code">list.js</span>: Scripts que se aplican a las páginas de listado (conocidas internamente como Ficha 2) dentro del sitio
+                <span class="code">product.js</span>: Scripts que se aplican a las páginas de producto (conocidas internamente como Ficha 3) dentro del sitio
+                <span class="code">scripts.js</span>: Scripts que se aplican a todas las páginas. También incluye la asignación de las variables más importantes.
+                <span class="code">...</span>
+        <span class="code">plugins</span>
+        <span class="code">sass</span>
+            <span class="code">base</span>
+                <span class="code">_base.scss</span>: Estructura básica (o <em>boilerplate</em>) del sitio. Incluye el sistema de grillas y la mayoría de los componentes y helpers de uso más común. La idea es que sea común a todos los sitios, así que no debe modificarse.
+                <span class="code">_mixins.scss</span>: <em>Mixins</em> que aportan funciones útiles y permiten generar vendor prefixes en cuestión de segundos para garantizar una mejor compatibilidad <em>cross-browser</em>.
+                <span class="code">_variables.scss</span>: Las variables básicas con sus valores por defecto. No debe modificarse.
+                <span class="code">normalize.scss</span>: Un <em>CSS reset</em> que homogeneiza los diferentes estilos por defecto que aplican los navegadores.
+            <span class="code">_customVariables.scss</span>: Las variables originales con los valores modificados por el desarrollador para adaptarse a las necesidades particulares del proyecto. También se pueden agregar variables propias. Estos valores sobrescriben los de <span class="code">_variables.scss</span>.
+            <span class="code">styles.scss</span>: Aquí es donde el desarrollador debe incluir los estilos que desee para adaptarse a las necesidades particulares del proyecto. Estos estilos pueden sobrescribir los de <span class="code">_base.scss</span>.
+        <span class="code">...</span>
+    <span class="code">...</span>
+<span class="code">.gitignore</span>
+<span class="code">README.md</span>
+</code>
+</pre>
+            <h3 id="sistema-de-grilla">Sistema de grilla</h3>
+
+            <p>El sistema de grilla utiliza una nomenclatura similar a la de Bootstrap. Está construido mayormente en flexbox, pero también brinda <em>fallbacks</em> para navegadores que no soporten ese módulo.</p>
+
+            <p>Los valores por defecto de la grilla, como así también los <em>breakpoints</em> a los que haremos referencia de ahora en más, están explicados en el artículo <a href="https://docs.google.com/document/d/1jvG7PF5Gc2c8HGZBqcNMgnnm6ee0tdOkZ7fzAQYv24E/edit#" target="_blank">Uso de grillas en diseño web</a>. Es necesario leer este documento antes de seguir adelante.</p>
+
+            <p>Veamos un ejemplo: una grilla de cuatro columnas.</p>
+
+            <div class="container">
+                <div class="global-grid show-grid grid-columns-joined grid-row">
+                    <div class="grid grid-of-12">
+                        <div class="grid-col col-3">grid-col col-3</div>
+
+                        <div class="grid-col col-3">grid-col col-3</div>
+
+                        <div class="grid-col col-3">grid-col col-3</div>
+
+                        <div class="grid-col col-3">grid-col col-3</div>
+
+                        <div class="grid-col col-3">grid-col col-3</div>
+
+                        <div class="grid-col col-3">grid-col col-3</div>
+
+                        <div class="grid-col col-3">grid-col col-3</div>
+
+                        <div class="grid-col col-3">grid-col col-3</div>
+                    </div>
+                </div>
+            </div>
+
+<pre>
+<code>
+<span class="code">&lt;div class="container"&gt;</span>
+    <span class="code">&lt;div class="global-grid grid-row"&gt;</span>
+        <span class="code">&lt;div class="grid grid-of-12"&gt;</span>
+            <span class="code">&lt;div class="grid-col col-3"&gt;grid-col col-3&lt;/div&gt;</span>
+
+            <span class="code">&lt;div class="grid-col col-3"&gt;grid-col col-3&lt;/div&gt;</span>
+
+            <span class="code">&lt;div class="grid-col col-3"&gt;grid-col col-3&lt;/div&gt;</span>
+
+            <span class="code">&lt;div class="grid-col col-3"&gt;grid-col col-3&lt;/div&gt;</span>
+
+            <span class="code">&lt;div class="grid-col col-3"&gt;grid-col col-3&lt;/div&gt;</span>
+
+            <span class="code">&lt;div class="grid-col col-3"&gt;grid-col col-3&lt;/div&gt;</span>
+
+            <span class="code">&lt;div class="grid-col col-3"&gt;grid-col col-3&lt;/div&gt;</span>
+
+            <span class="code">&lt;div class="grid-col col-3"&gt;grid-col col-3&lt;/div&gt;</span>
+        <span class="code">&lt;/div&gt;</span>
+    <span class="code">&lt;/div&gt;</span>
+<span class="code">&lt;/div&gt;</span>
+</code>
+</pre>
+
+            <p>El elemento que representa la grilla lleva una clase <span class="code">grid</span>, además de una clase modificadora <span class="code">grid-of-N</span>, donde <span class="code">N</span> es la máxima cantidad de unidades que puede contener cada fila. En este caso, la grilla puede contener hasta 12 unidades por fila.</p>
+
+            <p>Cada columna lleva una clase <span class="code">grid-col</span>, además de una clase modificadora <span class="code">col-I</span>, donde <span class="code">I</span> es la cantidad de unidades de ancho que ocupa. En este caso, son cuatro columnas que ocupan tres unidades.</p>
+
+            <p>El elemento <span class="code">grid</span> debe tener como padre inmediato un elemento <span class="code">grid-row</span>, que representa la fila. A su vez, el <span class="code">grid-row</span> debe ser hijo (inmediato o no) de un elemento <span class="code">container</span>.</p>
+
+            <p>Nótese que, a diferencia de lo que ocurre con la grilla de Bootstrap, si aquí queremos mostrar varias filas (en este caso, dos de cuatro columnas) podemos hacerlo utilizando un único elemento <em>row</em>.</p>
+
+            <p>La grilla también permite «empujar» columnas a la izquierda o a la derecha (<em>offset</em>), dejando un espacio vacío cuyo ancho será de la cantidad de unidades que le indiquemos:</p>
+
+            <div class="container">
+                <div class="global-grid show-grid grid-columns-joined grid-row">
+                    <div class="grid grid-of-12">
+                        <div class="grid-col col-3">grid-col col-3</div>
+
+                        <div class="grid-col col-3 pull-right-3">grid-col col-3 pull-right-3</div>
+
+                        <div class="grid-col col-3 pull-left-3">grid-col col-3 pull-left-3</div>
+
+                        <div class="grid-col col-3">grid-col col-3</div>
+                    </div>
+                </div>
+            </div>
+
+<pre>
+    <code>
+    <span class="code">&lt;div class="container"&gt;</span>
+        <span class="code">&lt;div class="global-grid grid-row"&gt;</span>
+            <span class="code">&lt;div class="grid grid-of-12"&gt;</span>
+                <span class="code">&lt;div class="grid-col col-3"&gt;grid-col col-3&lt;/div&gt;</span>
+
+                <span class="code">&lt;div class="grid-col col-3 pull-right-3"&gt;grid-col col-3 pull-right-3&lt;/div&gt;</span>
+
+                <span class="code">&lt;div class="grid-col col-3 pull-left-3"&gt;grid-col col-3 pull-left-3&lt;/div&gt;</span>
+
+                <span class="code">&lt;div class="grid-col col-3"&gt;grid-col col-3&lt;/div&gt;</span>
+            <span class="code">&lt;/div&gt;</span>
+        <span class="code">&lt;/div&gt;</span>
+    <span class="code">&lt;/div&gt;</span>
+    </code>
+</pre>
+
+            <p>La grilla puede ser responsiva, apilando las columnas en resoluciones donde el ancho no permita mostrarlas una la lado de otra:</p>
+
+            <div class="container">
+                <div class="global-grid show-grid grid-columns-joined grid-row">
+                    <div class="grid grid-of-12">
+                        <div class="grid-col col-3 col-medium-6 col-small-6 col-extra-small-12">grid-col col-3 col-medium-6 col-small-6 col-extra-small-12</div>
+
+                        <div class="grid-col col-3 col-medium-6 col-small-6 col-extra-small-12">grid-col col-3 col-medium-6 col-small-6 col-extra-small-12</div>
+
+                        <div class="grid-col col-3 col-medium-6 col-small-6 col-extra-small-12">grid-col col-3 col-medium-6 col-small-6 col-extra-small-12</div>
+
+                        <div class="grid-col col-3 col-medium-6 col-small-6 col-extra-small-12">grid-col col-3 col-medium-6 col-small-6 col-extra-small-12</div>
+                    </div>
+                </div>
+            </div>
+
+<pre>
+<code>
+<span class="code">&lt;div class="container"&gt;</span>
+    <span class="code">&lt;div class="global-grid grid-row"&gt;</span>
+        <span class="code">&lt;div class="grid grid-of-12"&gt;</span>
+            <span class="code">&lt;div class="grid-col col-3 col-medium-6 col-small-6 col-extra-small-12"&gt;grid-col col-3 col-medium-6 col-small-6 col-extra-small-12&lt;/div&gt;</span>
+
+            <span class="code">&lt;div class="grid-col col-3 col-medium-6 col-small-6 col-extra-small-12"&gt;grid-col col-3 col-medium-6 col-small-6 col-extra-small-12&lt;/div&gt;</span>
+
+            <span class="code">&lt;div class="grid-col col-3 col-medium-6 col-small-6 col-extra-small-12"&gt;grid-col col-3 col-medium-6 col-small-6 col-extra-small-12&lt;/div&gt;</span>
+
+            <span class="code">&lt;div class="grid-col col-3 col-medium-6 col-small-6 col-extra-small-12"&gt;grid-col col-3 col-medium-6 col-small-6 col-extra-small-12&lt;/div&gt;</span>
+        <span class="code">&lt;/div&gt;</span>
+    <span class="code">&lt;/div&gt;</span>
+<span class="code">&lt;/div&gt;</span>
+</code>
+</pre>
+
+            <p>Si se achica la ventana del navegador, podrá comprobarse que las columnas</p>
+
+            <ul>
+                <li>ocupan 3 unidades por defecto (<span class="code">col-3</span>),</li>
+
+                <li>ocupan 6 unidades en resolucíones de pantalla con 768px < ancho ≤ 1024px (<span class="code">col-medium-6</span>),</li>
+
+                <li>ocupan 6 unidades en resoluciones de pantalla con 480px < ancho ≤ 768px (<span class="code">col-small-6</span>) y</li>
+
+                <li>ocupan 12 unidades en resoluciones de pantalla con ancho ≤ 480px (<span class="code">col-extra-small-12</span>).</li>
+            </ul>
+
+            <p>Los <em>offset</em> de columnas también son responsivos:</p>
+
+            <div class="container">
+                <div class="global-grid show-grid grid-columns-joined grid-row">
+                    <div class="grid grid-of-12">
+                        <div class="grid-col col-6">grid-col col-6</div>
+
+                        <div class="grid-col col-3 pull-right-3 col-medium-4 pull-right-medium-2 col-small-5 pull-right-small-1 col-extra-small-6 pull-right-extra-small-0">grid-col col-3 pull-right-3 col-medium-5 pull-right-medium-1</div>
+                    </div>
+                </div>
+            </div>
+
+<pre>
+<code>
+<span class="code">&lt;div class="container"&gt;</span>
+    <span class="code">&lt;div class="global-grid grid-row"&gt;</span>
+        <span class="code">&lt;div class="grid grid-of-12"&gt;</span>
+            <span class="code">&lt;div class="grid-col col-6"&gt;grid-col col-6&gt;/div&gt;</span>
+
+            <span class="code">&lt;div class="grid-col col-3 pull-right-3 col-medium-4 pull-right-medium-2 col-small-5 pull-right-small-1 col-extra-small-6 pull-right-extra-small-0"&gt;grid-col col-3 pull-right-3 col-medium-5 pull-right-medium-1&gt;/div&gt;</span>
+        <span class="code">&lt;/div&gt;</span>
+    <span class="code">&lt;/div&gt;</span>
+<span class="code">&lt;/div&gt;</span>
+</code>
+</pre>
+
+            <p>Si se achica la ventana del navegador, podrá comprobarse que la segunda columna</p>
+
+            <ul>
+                <li>ocupa 3 unidades (<span class="code">col-3</span>) y tiene un <em>offset</em> de 3 unidades hacia la derecha (<span class="code">pull-right-3</span>) por defecto,</li>
+
+                <li>ocupa 4 unidades (<span class="code">col-medium-4</span>) y tiene un <em>offset</em> de 2 unidades hacia la derecha (<span class="code">pull-right-medium-2</span>) en resolucíones de pantalla con 768px < ancho ≤ 1024px,</li>
+
+                <li>ocupa 5 unidades (<span class="code">col-small-5</span>) y tiene un <em>offset</em> de 1 unidad hacia la derecha (<span class="code">pull-right-small-1</span>) en resolucíones de pantalla con 480px < ancho ≤ 768px,</li>
+
+                <li>ocupa 6 unidades (<span class="code">col-extra-small-6</span>) y tiene un <em>offset</em> de 0 unidades hacia la derecha (<span class="code">pull-right-extra-small-0</span>) en resolucíones de pantalla con ancho ≤ 480px.</li>
+            </ul>
+
+            <p>Existen dos tipos de grillas: las globales y las de producto. Las grillas globales pueden aplicarse a la mayor parte del contenido (incluyendo el <em>header</em> y las páginas institucionales), mientras que las grillas de producto se utilizan específicamente para mostrar filas de entre uno y seis productos, y pueden tener márgenes y anchos personalizados.</p>
+
+            <p>Así, en la Home de Murillo 666 podríamos encontrar una grilla de productos como la que sigue:</p>
+
+            <img class="full_width frame" src="images/screenshot.png" alt="">
+<pre>
+<code>
+<span class="code">&lt;div class="container"&gt;</span>
+    <span class="code">&lt;div class="products-grid grid-row"&gt;</span>
+        <span class="code">&lt;div class="grid grid-of-3"&gt;</span>
+            <span class="code">&lt;li class="grid-col col-1"&gt;</span>
+                <span class="code">&lt;div class="product-card"&gt;</span>
+                    ...
+                <span class="code">&lt;/div&gt;</span>
+            <span class="code">&lt;/li&gt;</span>
+
+            <span class="code">&lt;li class="grid-col col-1"&gt;</span>
+                <span class="code">&lt;div class="product-card"&gt;</span>
+                    ...
+                <span class="code">&lt;/div&gt;</span>
+            <span class="code">&lt;/li&gt;</span>
+
+            <span class="code">&lt;li class="grid-col col-1"&gt;</span>
+                <span class="code">&lt;div class="product-card"&gt;</span>
+                    ...
+                <span class="code">&lt;/div&gt;</span>
+            <span class="code">&lt;/li&gt;</span>
+        <span class="code">&lt;/div&gt;</span>
+    <span class="code">&lt;/div&gt;</span>
+<span class="code">&lt;/div&gt;</span>
+</code>
+</pre>
+
+            <p>Hay algunas diferencias entre el <em>markup</em> de esta grilla y el de las anteriores:</p>
+
+            <ul>
+                <li>En vez de la clase <span class="code">global-grid</span>, se usa la clase <span class="code">products-grid</span>.</li>
+
+                <li>En vez de la clase <span class="code">grid-of-12</span>, se usa la clase <span class="code">grid-of-3</span>. Esto implica que se trata de una grilla donde puede colocarse un máximo de tres unidades por fila.</li>
+            </ul>
+
+            <p>Nótese que estas grillas no tienen aplicadas las clases para responsive que vimos en otros ejemplos. Esto se debe a que su comportamiento en dispositivos móviles es diferente, y se maneja por JavaScript.</p>
+
+            <p>Los estilos de cada grilla se aplican al momento de crearla, y esto se logra a través del <em>mixin</em> <span class="code">grid()</span>, cuya implementación puede leerse en <span class="code">_base.scss</span>. Este <em>mixin</em> crea las reglas CSS necesarias para estructurar la grilla, a partir de los siguientes argumentos:</p>
+
+            <ul>
+                <li><span class="code">$columns</span>: cantidad máxima de unidades por fila.</li>
+
+                <li><span class="code">$padding</span>: espacio entre las columnas.</li>
+
+                <li><span class="code">$columnBreak</span> (opcional): indica explícitamente a partir de qué columna insertar un salto de fila. Este argumento solo es necesario si queremos que las grillas se vean bien en <a href="https://caniuse.com/#feat=flexbox" target="_blank">navegadores que no soporten flexbox</a>. Por ejemplo, si queremos garantizar que cada fila tenga un máximo de cuatro columnas, <span class="code">$columnBreak</span> debe ser <span class="code">4</span>. Esta característica no es responsiva, pero esto no es problema dado que los navegadores que se ven afectados son únicamente de escritorio.</li>
+            </ul>
+
+            <p>Veamos algunos ejemplos, tomados de <span class="code">_base.scss</span>.</p>
+
+<pre>
+<code>
+<span class="code">.global-grid {</span>
+    <span class="code">@include grid(12, $container-padding * 2);</span>
+<span class="code">}</span>
+</code>
+</pre>
+
+            <p>Crea una grilla de tipo global.</p>
+
+<pre>
+<code>
+<span class="code">.products-grid {</span>
+    <span class="code">@include grid(6, $container-padding * 2);</span>
+    <span class="code">@include grid(6, $container-padding * 2);</span>
+    <span class="code">@include grid(5, $container-padding * 2);</span>
+    <span class="code">@include grid(3, $container-padding * 2);</span>
+    <span class="code">@include grid(2, $container-padding * 2);</span>
+<span class="code">}</span>
+</code>
+</pre>
+
+            <p>Crea grillas para mostrar dos, tres, cuatro, cinco y seis productos por fila.</p>
+
+            <p>Dado que, en general, los sitios nuevos se hacen sobre la base de sitios anteriores, que ya vienen con una estructura armada, rara vez es necesario crear grillas adicionales desde Sass.</p>
+
+            <h3 id="helpers">Helpers</h3>
+            
+            <h4 id="visibilidad">Visibilidad</h4>
+
+            <p>Las siguientes clases hacen que un elemento sea invisible en ciertas resoluciones:</p>
+
+            <ul>
+                <li><span class="code">hidden-large</span>: oculta el elemento cuando la resolución de pantalla es menor o igual al <em>breakpoint</em> <span class="code">large</span> (1200px).</li>
+
+                <li><span class="code">hidden-medium</span>: oculta el elemento cuando la resolución de pantalla es menor o igual al <em>breakpoint</em> <span class="code">medium</span> (1024px).</li>
+
+                <li><span class="code">hidden-small</span>: oculta el elemento cuando la resolución de pantalla es menor o igual al <em>breakpoint</em> <span class="code">small</span> (768px).</li>
+
+                <li><span class="code">hidden-extra-small</span>: oculta el elemento cuando la resolución de pantalla es menor o igual al <em>breakpoint</em> <span class="code">extra-small</span> (480px).</li>
+            </ul>
+
+            <p>Las siguientes clases hacen que un elemento sea visible en ciertas resoluciones:</p>
+
+            <ul>
+                <li><span class="code">visible-large</span>: muestra el elemento cuando la resolución de pantalla es menor o igual al <em>breakpoint</em> <span class="code">large</span> (1200px).</li>
+
+                <li><span class="code">visible-medium</span>: muestra el elemento cuando la resolución de pantalla es menor o igual al <em>breakpoint</em> <span class="code">medium</span> (1024px).</li>
+
+                <li><span class="code">visible-small</span>: muestra el elemento cuando la resolución de pantalla es menor o igual al <em>breakpoint</em> <span class="code">small</span> (768px).</li>
+
+                <li><span class="code">visible-extra-small</span>: muestra el elemento cuando la resolución de pantalla es menor o igual al <em>breakpoint</em> <span class="code">extra-small</span> (480px).</li>
+            </ul>
+
+            <p>Nótese que estas clases suelen utilizarse especialmente en el <em>header</em> y la barra de navegación, ya que contienen elementos que pueden verse o no verse según la resolución.</p>
+
+            <h4 id="accesibilidad">Accesibilidad</h4>
+
+            <p>La clase <span class="code">sr-only</span> hace que cierto elemento sea invisible pero que su contenido sea legible para un <em>software</em> de lectura de pantalla, ayudando a los usuarios que sufran alguna discapacidad visual.</p>
+
+            <h3 id="componentes">Componentes</h3>
+
+            <h4 id="header">Header</h4>
+
+            <p>El <em>header</em> es uno de los componentes más complejos de la interfaz, debido a algunas características particulares:</p>
+
+            <ul>
+                <li>Tiene un buscador de productos, que muestra sugerencias a medida que el usuario ingresa su consulta.</li>
+                
+                <li>En resoluciones <em>mobile</em>, el buscador aparece inicialmente colapsado, y se despliega al hacer clic.</li>
+                
+                <li>Se reduce y se fija al tope de la pantalla cuando el usuario se desplaza hacia abajo.</li>
+                
+                <li>Su diseño varía mucho según la resolución de pantalla. Por ejemplo, en las resoluciones de escritorio la barra de navegación está debajo del <em>header</em>, mientras que en las resoluciones <em>mobile</em> pasa a estar dentro de él.</li>
+            </ul>
+
+            <p>Para facilitar el manejo del <em>header</em>, en algunos proyectos (incluyendo Murillo 666) su funcionamiento se encapsuló en un <em>plugin</em>, <span class="code">dynamicHeader</span>, que se invoca en <span class="code">applications/frontend/modules/views/index.blade.php</span>. Deben proveérsele los siguientes argumentos:</p>
+
+            <ul>
+                <li><span class="code">headerHeight</span>: alto del <em>header</em> (en px) cuando el usuario todavía no hizo scroll. <strong>Tipo:</strong> numérico.</li>
+
+                <li><span class="code">mobileWidth</span>: ancho de pantalla (en px) que se tomará como límite entre desktop y mobile. <strong>Tipo:</strong> numérico.</li>
+
+                <li><span class="code">shrinkCart</span>: indica si al resumen del carro de compra que figura en el <em>header</em> debe aplicársele la clase cart-shrink en resoluciones mobile y cuando el usuario se desplaza hacia abajo, de manera que se muestre una vista más compacta. <strong>Tipo:</strong> booleano.</li>
+
+                <li><span class="code">speed</span>: velocidad de transición (en ms) de la animación del buscador en resoluciones mobile. <strong>Tipo:</strong> numérico.</li>
+
+                <li><span class="code">responsive</span>: un conjunto de media queries, compuestos por un <em>breakpoint</em> y un headerHeight, que indican qué alto de <em>header</em> aplicar a distintas resoluciones. <strong>Tipo:</strong> array de objetos.</li>
+            </ul>
+
+            <p>Veamos un ejemplo:</p>
+
+<pre>
+<code>
+<span class="code">$('#header-main').dynamicHeader({</span>
+    <span class="code">headerHeight: 130,</span>
+    <span class="code">mobileWidth: mediumMaxWidth,</span>
+    <span class="code">shrinkCart: false,</span>
+    <span class="code">speed: transitionDuration,</span>
+    <span class="code">responsive: [</span>
+    <span class="code">{</span>
+        <span class="code">breakpoint: mediumMaxWidth,</span>
+        <span class="code">headerHeight: 137</span>
+    <span class="code">},</span>
+    <span class="code">{</span>
+        <span class="code">breakpoint: extraSmallMaxWidth,</span>
+        <span class="code">headerHeight: 129</span>
+    <span class="code">}]</span>
+<span class="code">});</span>
+</code>
+</pre>
+
+            <p>En este caso, el <em>header</em> tiene inicialmente un alto de 130px. Se considera que una pantalla es <em>mobile</em> cuando su ancho es igual o menor a <span class="code">mediumMaxWidth</span> (1024px). La clase <span class="code">shrink-cart</span> no se aplicará al resumen del carro. La velocidad de la animación del buscador será igual a <span class="code">transitionDuration</span> (200ms). En resoluciones con ancho menor o igual a <span class="code">mediumMaxWidth</span> (1024px), el alto inicial del <em>header</em> será de 137px, y en resoluciones con ancho menor o igual a <span class="code">extraSmallMaxWidth</span> (480px), el alto inicial del <em>header</em> será de 129px.</p>
+
+            <h3 id="recomendaciones">Recomendaciones</h3>
+
+            <ol>
+                <li>Rara vez será necesario crear componentes desde cero. El <em>framework</em> ya viene con implementaciones propias de componentes como modales, desplegables, menús de navegación y <em>scrollspy</em>, entre otros. Si en el diseño se pide un componente que parece no haber sido implementado, preguntar por un proyecto que sí lo tenga, revisar su markup y buscar algo similar en el código del proyecto actual. Seguramente ya esté hecho en algún lugar.</li>
+
+                <li>Por lo expresado en el punto 1, en general tampoco será necesario incorporar <em>plugins</em>.</li>
+
+                <li>Si se va a modificar algún componente, ser cuidadoso a la hora de cambiar clases o ID (o directamente ni cambiarlos), ya que probablemente estos se utilicen como selector en alguna función de JavaScript.</li>
+
+                <li>Los nombres de clases, mixins, funciones y otros elementos del código están en inglés, que es el idioma convencional de la programación. Sería ideal no romper esa regla.</li>
+            </ol>
+
+            <h2 id="buenas-practicas">Buenas prácticas</h2>
+
+            <ul>
+                <li>Seguir la <a href="https://github.com/airbnb/css" target="_blank">guía de CSS de Airbnb</a>.</li>
+
+                <li>Seguir la <a href="https://github.com/airbnb/javascript" target="_blank">guía de JavaScript de Airbnb</a>.</li>
+
+                <li>Usar el formato <a href="http://usejsdoc.org/" target="_blank">JSDoc</a> para comentar el código JavaScript.</li>
+            </ul>
+        </div>
+    </body>
+</html>

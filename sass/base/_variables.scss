@@ -1,0 +1,251 @@
+$fonts-url: '../fonts';
+$images-url: '../images';
+
+$font-family-main: 'Arial', 'Helvetica Neue', sans-serif;
+$font-family-complementary: 'Arial', 'Helvetica Neue', sans-serif;
+$font-size-base: 16px;
+
+$main-color: #428bca;
+$complementary-color: #00DC83;
+$complementary-color-lighter: #00ED8D;
+$main-text-color: #464646;
+$fake_link-color: $complementary-color;
+
+$success-background-color: #dff0d8;
+$success-border-color: #d0e9c6;
+$success-color: #3C763D;
+$failure-background-color: #F2DEDE;
+$failure-border-color: #EBCCCC;
+$failure-color: #A94442;
+$disclaimer-background-color: #D9EDF7;
+$disclaimer-border-color: #BCE8F1;
+
+$transition-duration: 0.2s;
+$transition-function: ease;
+$transition-delay: 0s;
+
+$container-max-width: 1200px;
+$container-padding: 14px;
+
+$large-max-width: 1200px;
+$medium-max-width: 1024px;
+$small-max-width: 768px;
+$extra-small-max-width: 480px;
+
+$button-padding: 9px;
+$button-mini-padding: 7px;
+$button-mini-padding-medium: 12px;
+$button-icon-only-min-size: 45px;
+
+$input-border-color: transparent;
+$input-border-style: solid;
+$input-border-width: 0;
+$input-border-radius: 0;
+$input-font-family: $font-family-main;
+$input-font-size: 14px;
+
+$radio-list-font-size: 18px;
+$radio-list-li-label-padding-y: 12px;
+$color-list-li-border-radius: 6px;
+$color-list-label-size: 37px;
+$color-list-label-size-medium: 31px;
+
+$select-list-min-height: 38px;
+$select-list-width: 202px;
+$select-list-border-color: #B5B4B4;
+$select-list-border-radius: 5px;
+$select-list-font-size: 15px;
+$select-list-li-inner-padding-y: 12px;
+$select-list-li-hover-background-color: #f1efef;
+
+$scrollspy-font-size: 18px;
+$scrollspy-title-active-background-color: $header-main-background-color;
+$scrollspy-title-color: #838282;
+$scrollspy-title-active-color: #FFFFFF;
+
+$header-main-background-color: $main-color;
+$header-main-color: #FFFFFF;
+$header-main-height: 148px;
+$header-main-height-medium: 123px;
+$header-bar-font-size: 14px;
+$header-bar-height: 40px;
+
+$hamburger-color: $header-main-color;
+$hamburger-width: 41px;
+$hamburger-width-sticky: 41px;
+$hamburger-bar-margin-bottom: 12px;
+
+$icon-text-font-size: 18px;
+$icon-text-icon-width: 45px;
+$icon-text-mini-font-size: 15px;
+$icon-text-mini-icon-width: 35px;
+$icon-text-maxi-font-size: 13px;
+$icon-text-maxi-icon-width: 29px;
+$navbar-main-icon-text-mini-font-size: 16px;
+$navbar-main-icon-text-mini-icon-width: 29px;
+
+$arrow-background-color: $main-color;
+$arrow-height: 4px;
+$arrow-width: 8px;
+$tip-background-color: $complementary-color;
+$tip-height: 13px;
+$tip-width: 21px;
+
+$tooltip-padding: 24px;
+$tooltip-width: 197px;
+
+$modal-padding-x: 20px;
+$modal-padding-y: 20px;
+$modal-min-height: 165px;
+$modal-width: 570px - $modal-padding-x * 2;
+$modal-maxi-padding-x: 15px;
+$modal-maxi-padding-y: 15px;
+$modal-maxi-width: 700px - $modal-maxi-padding-x * 2;
+$modal-mini-padding-x: 82px;
+$modal-mini-padding-y: 38px;
+$modal-mini-width: 441px - $modal-mini-padding-x * 2;
+$modal-padding-x-small: 22px;
+$modal-padding-y-small: 18px;
+$modal-width-small: 400px - $modal-padding-x-small * 2;
+$modal-width-extra-small: 262px - $modal-padding-x-small * 2;
+$modal-title-background-color-diff: color-diff(#FF0088, #FCE7F4);
+$modal-title-background-color: apply-diff($complementary-color, $modal-title-background-color-diff);
+
+$small-arrow-height: 36px;
+$small-arrow-width: 22px;
+$small-arrow-distance-x: -32px;
+
+$hero-max-width: 1680px;
+
+$feature-background-color-diff: color-diff(#0184BC, #E0F2F1);		// the distance between our two colors will be the same as the distance between #0184BC and #E0F2F1
+$feature-background-color: apply-diff($main-color, $feature-background-color-diff);
+$feature-color-diff: color-diff(#0184BC, #96AFAE);
+$feature-color: apply-diff($main-color, $feature-color-diff);
+$feature-font-size: 16px;
+$feature-font-size-medium: 18px;
+$feature-font-size-extra-small: 15px;
+$feature-img-height: 25px;
+$feature-img-height-medium: 27px;
+$feature-img-height-extra-small: 28px;
+$feature-content-padding: 25px;
+$feature-content-padding-medium: 31px;
+$feature-content-padding-extra-small: 20px;
+$features-slick-arrow-distance-x: 17px;
+$features-slick-arrow-height: 22px;
+$features-slick-arrow-width: 10px;
+
+$ribbon-color: $header-main-color;
+$ribbon-font-size: 14px;
+$ribbon-font-size-medium: 13px;
+
+$highlighted-bar-background-color: $header-main-background-color;
+$highlighted-bar-form-input-height: $input-height;
+$highlighted-bar-form-input-width: 457px;
+
+$footer-main-background-color: $main-text-color;
+$footer-main-color: #FFFFFF;
+
+$main-text-color-diff: color-diff(#0184BC, #5CCDBC);
+$navbar-main-background-color: apply-diff($main-color, $main-text-color-diff);
+$navbar-main-height: 54px;
+$navbar-main-li-font-size: 17px;
+$navbar-main-li-a-padding-x: 25px;
+$navbar-main-li-a-padding-y: 17px;
+
+$navbar-main-dropdown-list-title-background-color: $complementary-color;
+$navbar-main-dropdown-list-title-color: $header-main-color;
+$navbar-main-submenu-background-color: $header-main-color;
+$navbar-main-submenu-height: 446px;
+$navbar-main-submenu-width: 276px;
+$navbar-main-submenu-with_banners-banner-width: $navbar-main-submenu-width;
+$navbar-main-submenu-with_banners-width: $navbar-main-submenu-width + $navbar-main-submenu-with_banners-banner-width + 2px;
+$navbar-main-width-medium: 434px;
+$navbar-main-submenu-li-padding-y: 12px;
+$navbar-main-submenu-li-hover-background-diff: color-diff(#FFFFFF, #F1EFEF);
+$navbar-main-submenu-li-hover-background-color: apply-diff($navbar-main-submenu-background-color, $navbar-main-submenu-li-hover-background-diff);
+
+$product-specs-color: #707070;
+$product-regular_price-color: #9e9a9a;
+
+$product-card-width-medium: 199px;
+$product-card-product-specs-font-size: 14px;
+$product-card-product-name-color: #000000;
+$product-card-product-name-font-size: 15px;
+$product-card-product-name-font-size-medium: 17px;
+$product-card-product-regular_price-font-size: 17px;
+$product-card-product-regular_price-font-size-medium: 17px;
+$product-card-product-price-font-size: 33px;
+$product-card-product-price-font-size-medium: 23px;
+$product-card-product-installments-font-size: 14px;
+
+$product-card-big-product-image-width: 515px;
+$product-card-big-product-outer-info-width: 567px;
+$product-card-big-ribbon-font-size: 20px;
+$product-card-big-product-name-font-size: 16px;
+$product-card-big-product-name-font-size-medium: 14px;
+$product-card-big-product-regular_price-font-size: 29px;
+$product-card-big-product-regular_price-font-size-medium: 21px;
+$product-card-big-product-price-font-size: 39px;
+$product-card-big-product-price-font-size-medium: 28px;
+$product-card-big-product-installments-font-size: 15px;
+$product-card-product-installments-font-size-medium: 14px;
+$product-best_rating: 5;
+
+$pagination-font-size: 23px;
+
+$filters-products-list-grid-padding: 24px;
+$filters-title-h2-font-size: 21px;
+$filters-title-h2-color: $main-color;
+$filters-set-legend-font-size: 19px;
+$filters-set-legend-padding-y: 15px;
+$products-list-title-views-h2-color: $main-text-color;
+$products-list-title-views-h2-font-size: 23px;
+
+$section-h1-color: $main-text-color;
+$section-h1-font-size: 29px;
+$section-h2-color: #000000;
+$section-h2-font-size: 17px;
+$section-h2-font-size-medium: 22px;
+
+$product-pictures-detail-product-category-font-size: 19px;
+$product-pictures-detail-product-name-font-size: 38px;
+$product-pictures-detail-product-name-font-size-medium: 21px;
+$product-pictures-detail-product-regular_price-font-size: 25px;
+$product-pictures-detail-product-regular_price-font-size-medium: 36px;
+$product-pictures-detail-product-price-font-size: 39px;
+$product-pictures-detail-product-price-font-size-medium: 49px;
+$product-pictures-detail-product-installments-font-size: 20px;
+$product-pictures-detail-product-installments-font-size-medium: 24px;
+$product-pictures-detail-legend-font-size: 18px;
+$product-pictures-detail-legend-font-size-medium: 28px;
+$product-pictures-detail-product-pictures-width: 723px;
+$product-pictures-detail-vertical-padding-x: 42px;
+$product-pictures-detail-vertical-product-pictures-width: 1006px;
+$product-pictures-detail-product-detail-width: 723px;
+$product-pictures-detail-vertical-product-detail-width: 330px;
+$product-pictures-detail-vertical-slider-nav-width: 425px;
+$product-pictures-detail-slider-nav-li-border-color: #E1E0E0;
+$product-pictures-detail-slider-nav-li-border-width: 1px;
+$product-pictures-detail-vertical-slider-nav-li-width: 143px;
+$product-pictures-detail-slider-nav-li-margin: 14px;
+$product-pictures-detail-vertical-slider-nav-li-margin: 18px;
+$product-pictures-detail-vertical-slider-for-width: 649px;
+$product-pictures-detail-slider-for-li-img-max-height: 532px;
+$product-pictures-detail-product-buy-height: 48px;
+$product-pictures-detail-product-buy-font-size: 23px;
+
+$product-options-button-width: 281px;
+$product-options-button-img-height: 37px;
+$product-options-button-img-height-medium: 34px;
+$product-options-button-paragraph-font-size: 14px;
+$product-options-button-paragraph-font-size-medium: 14px;
+$product-options-button-subtitle-font-size: 16px;
+$product-options-button-subtitle-font-size-medium: 14px;
+
+$table-container-max-width: 926px;
+$table-container-tr-padding-x: 177px;
+$table-container-tr-padding-y: 14px;
+$table-container-font-size: 19px;
+
+$generic-font-size: 19px;
+$generic-grid-padding: 64px;
