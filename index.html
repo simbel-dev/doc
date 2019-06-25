@@ -5,11 +5,8 @@
         <title>Guía de front-end para Simbel</title>
 
         <meta charset="utf-8">
-
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
-
         <link rel="stylesheet" type="text/css" href="css/styles.css">
     </head>
 
@@ -22,206 +19,154 @@
 
                 <ol>
 
-                    <li><a href="#tecnologias">Tecnologías</a></li>
-
-                    <li><a href="#organizacion">Organización</a></li>
-
-                    <li><a href="#instlacion">Instalación</a></li>
-
-                    <li><a href="#ejecucion">Ejecución</a></li>
-
-                    <li><a href="#modulos">Módulos</a></li>
-
-                    <li><a href="#maquetado-y-programacion">Maquetado y programación</a>
+                    <li><a href="#intro">Intro</a>
                         <ol>
-                            <li><a href="#para-editar-html-y-php">Para editar HTML/PHP</a></li>
-
-                            <li><a href="#para-editar-sass-css-javascript-e-imagenes">Para editar Sass/CSS, JavaScript e imágenes</a></li>
+                            <li><a href="#stack">Stack</a></li>
+                            <li><a href="#install">Instalación</a></li>
                         </ol>
                     </li>
 
-                    <li><a href="#el-framework">El framework</a>
+                    <li><a href="#estructura">Estructura general</a>
                         <ol>
-                            <li><a href="#sistema-de-archivos">Sistema de archivos</a></li>
-
-                            <li><a href="#sistema-de-grilla">Sistema de grilla</a></li>
-
-                            <li><a href="#helpers">Helpers</a>
-                                <ol>
-                                    <li><a href="#visibilidad">Visibilidad</a></li>
-
-                                    <li><a href="#accesibilidad">Accesibilidad</a></li>
-                                </ol>
-                            </li>
-
-                            <li><a href="#componentes">Componentes</a>
-                                <ol>
-                                    <li><a href="#header">Header</a></li>
-                                </ol>
-                            </li>
-
-                            <li><a href="#recomendaciones">Recomendaciones</a></li>
+                            <li><a href="#layouts">Layouts</a></li>
+                            <li><a href="#templates">Templates</a></li>
                         </ol>
                     </li>
 
-                    <li><a href="#buenas-practicas">Buenas prácticas</a></li>
+                    <li><a href="#frontend">Storefront</a>
+                        <ol>
+                            <li><a href="#framework">Framework Css</a>
+                                <ol>
+                                    <li><a href="#sistema-de-archivos">Sistema de archivos</a></li>
+
+                                    <li><a href="#sistema-de-grilla">Sistema de grilla</a></li>
+
+                                    <li><a href="#helpers">Helpers</a>
+                                        <ol>
+                                            <li><a href="#visibilidad">Visibilidad</a></li>
+
+                                            <li><a href="#accesibilidad">Accesibilidad</a></li>
+                                        </ol>
+                                    </li>
+
+                                    <li><a href="#componentes">Componentes</a>
+                                        <ol>
+                                            <li><a href="#header">Header</a></li>
+                                        </ol>
+                                    </li>
+
+                                    <li><a href="#recomendaciones">Recomendaciones</a></li>
+                                </ol>
+                            </li>
+                        </ol>                        
+                        
+                    </li>
+
                 </ol>
             </div>
 
 
-            <h2 id="tecnologias">Tecnologías</h2>
+            <h2 id="intro">Introducción</h2>
 
-<p>A continuación se detallan las principales tecnologías con las que trabaja la plataforma Simbel:</p>
+<p> El proposito de este documento es proveer toda la información necesaria para una correcta instalación y customización de una tienda Simbel. Como consideración debemos tener en cuenta que esta guía solo contempla el desarrollo sobre frontend, por tanto no encontraremos aquí información sobre código backend, arquitectura y base de datos. </p>
+<h3 id="stack">Stack</h3>
+<p>A continuación se detallan las principales tecnologías con las que trabaja actualmente la plataforma en un entorno productivo:</p>
 
 <ol>
-    <li><a href="http://codeigniter.com/">Codeigniter 3.0.0</a></li>
-    <li><a href="https://laravel.com/docs/5.0/templates">Blade PHP</a></li>
-    <li><a href="https://blog.jquery.com/2016/05/20/jquery-1-12-4-and-2-2-4-released/">Jquery V 1.12.4</a></li>
-    <li><a href="https://kenwheeler.github.io/slick/">Slick JS</a></li>
-    <li><a href="https://jqueryvalidation.org/">Jquery Validate</a></li>
-    <li><a href="https://twitter.github.io/typeahead.js/">Typeahead.js</a></li>
-    <li><a href="https://github.com/Mythli/jquery.ytLoad">Jquery ytLoad</a></li>
-    <li><a href="https://ricostacruz.com/jquery.transit/">Jquery transit</a></li>
+    <li>Cloud Hosting: <a href="http://linode.com/">Linode</a></li>
+    <li>OS: <a href="#">Debian 9</a></li>
+    <li>Web Server: <a href="#">Apache 2.2</a></li>
+    <li>PHP: <a href="#">7.* (framework Codeigniter 3.0.0)</a></li>
+    <li>Database: <a href="#">MariaDB 10.*</a></li>
+
 </ol>
-
-            <h2 id="organizacion">Organización</h2>
-            <p>La estructura del proyecto es la siguiente:</p>
-
-
-
-            <h2 id="instlacion">Instalación</h2>
-            <p>Para trabajar en la plataforma Simbel debemos montar un infrastructura LAMP:</p>
-            <ol>
-                <li>Linux como sistema operativo</li>
-                <li>Apache como servidor web</li>
-                <li>MySQL/MariaDB, el gestor de bases de datos</li>
-                <li> PHP como lenguaje de programación.</li>
-            </ol>    
-            <p>* Recomandamos utilizar la herramienta <a href="https://www.apachefriends.org/es/index.html">XAMPP</a> que nos facilita toda esta estructura y es de fácil configuración para trabajar localmente.</p>
-
-            <p>Acceso al código</p>
-            <p>La persona encargada de llevar adelante las modificaciones del codigo recibirá acceso al repositorio del proyecto que se encuentra alojoado en <a href="https://bitbucket.org/">Bitbucket</a>, es necesario para esto disponer de una cuenta registrada en el sitio.</p>
+<h3 id="install">Instalación</h3>
             
-            <p>Ambientes de trabajo</p>
-            <p>Los posibles ambientes de trabajos en los que puede encontrarse la plataforma son:</p>
-<ol>
-    <li>Development : Entorno o ambiente local.</li>
-    <li>Testing: ambiente para realizar test alojado dentro de los servidores de Simbel.</li>
-    <li>Stage: En general es donde el cliente realiza pruebas antes de subir cambios a su sitio productivo.</li>
-    <li>Production: ambiente productivo.</li>
-</ol>
-<p>Para definir en que ambiente queremos trabajar debemos crear un archivo con el nombre "config.env" dentro de applications, y dentro del mismo definir el ambiente de la siguiente forma:<p>
+    <p>Para instalar Simbel localmente debemos clonar el proyecto base "Simbel2.0" en el directorio raíz donde queremos ejecutarlo. Suponemos aquí que este directorio es el raíz de un servidor web instalado localmente con la infraestructura descripta ( LAMP ).
+    </p>
 
-<p>Ambiente local</p>
-<pre>
+    <p>* En caso de no tener instalado el servidor web recomendamos utilizar la herramienta <a href="https://www.apachefriends.org/es/index.html">XAMPP</a> que nos facilita toda esta estructura y es de fácil configuración para trabajar localmente.</p>
+
+    <p>Acceso al código</p>
+    <p>Al ser un repositorio privado,  es necesario disponer de una cuenta registrada en <a href="https://bitbucket.org/">Bitbucket</a> y solicitar el permiso al mismo. Luego podrá clonar el repositorio: </p
+        >
+    <pre>
 <code>
-<span class="code">development</span>
+<span class="code">git clone https://USER-BITBUCKET@bitbucket.org/ruca/portal-front.git</span>
 </code>
-</pre>
-
-<p>Ambiente de Testing</p>
-<pre>
-<code>
-<span class="code">testing</span>
-</code>
-</pre>
-
-<p>Ambiente de Stage</p>
-<pre>
-<code>
-<span class="code">stage</span>
-</code>
-</pre>
-
-<p>Ambiente de Producción</p>
-<pre>
-<code>
-<span class="code">production</span>
-</code>
-</pre>
-
-<p>Una vez que se defina el mabiente de trabajo la aplicación accedera a los archivos de configuración que corresponda, la configuración de los mismos se encuentra dentro de aplication/frontend/config</p>
-
-<pre>
-<code>
-<span class="code">-applications</span>
-<span class="code">--frontend</span>
-<span class="code">---config</span>
-<span class="code">--- development</span>
-<span class="code">---- constants.php</span>
-<span class="code">--- testing</span>
-<span class="code">---- constants.php</span>
-<span class="code">--- stage</span>
-<span class="code">---- constants.php</span>
-<span class="code">--- production</span>
-<span class="code">---- constants.php</span>
-</code>
-</pre>
-
-<p>Cada archivo de constantes define los datos de accesos a la base de datos y el nombre del dominio del ambiente.</p>
-
-           <h2 id="ejecucion">Ejecución</h2>
-            <p>Para poder navegar por las tiendas localmente, debemos abrir el programa XAMPP y cliquear en Start para los módulos Apache y MySQL.</p>
+</pre>    
+    <p><strong>Configuración</strong></p>
+    <p>Una vez clonado el proyecto, debería generarse la siguiente estructura de archivos:</p> 
+    <pre>
+        <code>
+        <span class="code">.git</span>
+        <span class="code">applications</span>
+        <span class="code">public_html</span>
+        <span class="code">.gitignore</span>
+        <span class="code">README.md</span>
+        </code>
+    </pre>     
+    <p> A continuación entonces, procederemos a definir el ambiente en el que trabajaremos. Para ello creamos un archivo llamado config.env dentro de /applications.<br/>
+        Luego editamos este archivo y agregamos la siguiente línea :
+            <pre>
+                <code>
+                <span class="code">testing</span>
+                </code>
+            </pre>
+     </p>     
+     <p> De esta manera la aplicación ya estaría lista y conectada a la base de datos de testing.</p>
+     <p> <i> <b>*Nota</b>: para poder realizar modificaciones en el administrador vinculado a este storefront, deberá solicitar dicho acceso </i></p>
 
 
-            <h2 id="maquetado-y-programacion">Maquetado y programación</h2>
+           <h2 id="estructura">Estructura general</h2>
+            <p>En esta sección detallaremos como se compone el layout base de la tienda y luego se presentarán los templates de cada módulo en particular. A modo de resumen podríamos decir que el layout indica la estructura general ( header , main , footer, etc) y los templates serán las vistas particulares ( ficha del producto, resultados de búsqueda, etc) </p>
+            <p>Para editar el <em>markup</em> de las tiendas, en la mayoría de los casos vamos a necesitar trabajar en <span class="code">applications/frontend/modules</span>. Dentro de esta carpeta hay carpetas dedicadas a cada uno de los módulos que componen las interfaces de los sitios. Por ejemplo, la carpeta <span class="code">applications/frontend/modules/home</span> corresponde a la página Home del sitio y el html a editar lo encontramos dentro de <span class="code">/views </span>.</p>
+            <p> Los archivos a editar veran que no tienen extension <i>.html</i> sino <i>.blade.php</i> ya que <a href="https://laravel.com/docs/5.0/templates">Blade PHP</a> el sistema de plantillas utilizado para facilitar la lectura y estructuras de codigo PHP dentro del markup HTML. 
+            </p>
+            <p> Los recursos para alterar el DOM (css, js, etc.) están dentro de la carpeta <span class="code">/public_html/public</span> y están detallados en la sección "Storefront guide".</p>
 
-            <p>Para trabajar en un proyecto, abriremos el directorio raíz del mismo desde Sublime Text: File/Open Folder.... El árbol de carpetas aparecerá en la columna izquierda, y se verá aproximadamente así:</p>
-<pre>
-<code>
-<span class="code">.git</span>
-<span class="code">applications</span>
-<span class="code">public_html</span>
-<span class="code">.gitignore</span>
-<span class="code">README.md</span>
-</code>
-</pre>
-
-            <p>Una vez que hayamos abierto la carpeta, dentro de las carpetas <span class="code">applications</span> y <span class="code">public_html</span> veremos muchos otros documentos y carpetas, con distintos niveles de profundidad. Pero vamos a profundizar únicamente en los más importantes para el desarrollo <em>front-end</em>: los que necesitamos para editar HTML/PHP, CSS/Sass, JavaScript e imágenes.</p>
-
-            <h3 id="para-editar-html-y-php">Para editar HTML/PHP</h3>
-
-<pre>
-<code>
-<span class="code">.git</span>
-<span class="code">applications</span>
-    <span class="code">frontend</span>
-        <span class="code">modules</span>
-            <span class="code">home</span>
-                <span class="code">views</span>
+            <h3 id="layouts">Layouts</h3>
+            <p> Los archivos que arman la estructura base del sitio podemos encontrarlos en </p>
+            <pre>
+            <code>
+            <span class="code">.git</span>
+            <span class="code">applications</span>
+                <span class="code">frontend</span>
+                    <span class="code">modules</span>
+                        <span class="code">layouts</span>
+                            <span class="code">views</span>
+                <span class="code">system</span>
                 <span class="code">...</span>
-            <span class="code">layouts</span>
-                <span class="code">views</span>
-                <span class="code">...</span>
-            <span class="code">productos</span>
-                <span class="code">views</span>
-                <span class="code">...</span>
-            <span class="code">...</span>
-    <span class="code">system</span>
-    <span class="code">...</span>
-<span class="code">public_html</span>
-<span class="code">.gitignore</span>
-<span class="code">README.md</span>
-</code>
-</pre>
+            <span class="code">public_html</span>
+            <span class="code">.gitignore</span>
+            <span class="code">README.md</span>
+            </code>
+            </pre>
+            <p>
+                Dentro de todas las vistas listadas en esta carpeta, tomaremos la principal "index.blade.php" . Todo otra vista se ejecutará siempre dentro de esta. 
+                En este archivo veremos, entre otras cosas, la declaración del documento, metadata, la carga de todos los JS/CSS  y también la carga de las vistas según la ruta donde nos encontremos:
+                <img style='padding: 20px;max-width: 600px;' src='images/index.blade.jpg'>
+            </p>
+            <p> Vemos que dentro del <span class="code">body</span> carga en primer lugar el "header" ( que su vista se encuentra como se puede ver en la misma ruta, es decir /layouts/header.blade.php ).  <img style='padding: 20px;max-width: 800px;' src='images/header.blade.jpg'><br />A su vez, vemos que header.blade.php incluye a la vista que despliega la barra de categorías (navbar)</p>
 
-            <p>Para editar el <em>markup</em> de las tiendas, en la mayoría de los casos vamos a necesitar trabajar en <span class="code">applications/frontend/modules</span>. Dentro de esta carpeta hay carpetas dedicadas a cada uno de los módulos que componen las interfaces de los sitios. Por ejemplo, la carpeta <span class="code">applications/frontend/modules/home</span> corresponde a la página Home, la carpeta <span class="code">applications/frontend/modules/productos</span> corresponde a las páginas de producto, la carpeta <span class="code">applications/frontend/modules/pages</span> corresponde a las páginas institucionales del sitio (como Nosotros), la carpeta <span class="code">applications/frontend/modules/lista</span> corresponde a las páginas de listado, la carpeta <span class="code">applications/frontend/modules/layouts</span> corresponde a los elementos de la estructura de la página (como el <em>header</em> y el <em>footer</em>), etc.</p>
+            <p>Luego dentro del tag <span class="code">main</span> se ejecutará el contenido dinámico "content" según la ruta donde nos encontremos. Por ejemplo si estuvieramos en el home del sitio, dentro de <span class="code">main</span>  se ejecutaría la vista <span class="code">applications/frontend/modules/home/views/index.blade.php</span>. Por último se ejecuta el footer que al igual que el header tenemos su vista en el mismo directorio.</p>
 
-            <p>Dentro de cada una de esas carpetas, generalmente trabajaremos en los documentos PHP que figuran dentro de la carpeta <span class="code">views</span>. Por ejemplo, para editar la página Nosotros, editaremos el archivo <span class="code">applications/frontend/modules/pages/views/nosotros.blade.php</span>.</p>
+            <h3 id="templates">Templates</h3>
+            <p>A continuación se detallan los módulos utilizados en el frontend, las rutas mediante las cuales se acceden (siempre y cuando no sea una "subvista", es decir, se embeba dentro de otra y por tanto no es accesible por URL) y también se especificará si contiene otra subvista. Como se vió en la sección anterior, todas las vistas que se veran a continuacion se ejecutarán dentro del tag <span class="code">main</span> mediante la instrucción blade "@yield('content')".</p>
 
-            <p>Sin embargo, en la mayoría de los casos es difícil darse cuenta a simple vista de cuál es el archivo que tenemos que editar. Lo más cómodo es identificar el fragmento de código que queremos cambiar y buscarlo dentro del proyecto. Por ejemplo, supongamos que queremos editar el texto de la página Nosotros. Vemos que el primer párrafo de ese texto empieza diciendo: «Nuestra firma cuenta con una trayectoria de más de 50 años [...]». Entonces podemos seguir estos pasos:</p>
-
-            <ol>
-                <li>Cliquear con el botón derecho sobre la carpeta raíz. Cliquear sobre Find in Folder...</li>
-
-                <li>Ingresar <em>Nuestra firma cuenta con una trayectoria de más de 50 años</em>. Cliquear sobre Find.</li>
-
-                <li>Se abrirá una página con los resultados de la búsqueda.</li>
-
-                <li>Cliquear sobre la frase que figure resaltada en el resultado indicado. Se abrirá el archivo que necesitamos.</li>
-            </ol>
-
-            <h3 id="para-editar-sass-css-javascript-e-imagenes">Para editar Sass/CSS, JavaScript e imágenes</h3>
+            <h4> HOME </h4>
+            <p><img style='padding: 20px;max-width: 600px;' src='images/modulo_home.jpg'></p>
+            <p> Este modulo carga el contenido de la pagina principal. Como se ve, dentro de <span class="code">home/views/index.blade.php </span> se carga inicialmente el slider principal, luego un bloque HTML "features" editable y a continuacion una estructura PHP que irá agregando bloques como tantas secciones de productos/banners se hayan creado en el administrador. Si es un bloque de productos invocara la vista <span class="code">productos.blade.php </span> y en el caso de que sea una sección de banners cargará la vista <span class="code">banners.blade.php </span></p>
+            <p>De estas dos vistas, vemos que la de productos embebe a su vez una nueva vista ubicada en otro módulo <span class="code">/productos/views/one_product.blade.php </span>. Este vista la veremos en detalle en el modulo de productos, pero es un template fundamental ya que se utiliza tanto se muestre un producto o más (y también se utiliza en otros módulos como los resultados de búsqueda) </p>
+            <h2 id="techs">Storefront Guide</h2>
+            <p> Tecnologías utilizadas UX / UI :
+                <li> Javascript ( con <a href="https://blog.jquery.com/2016/05/20/jquery-1-12-4-and-2-2-4-released/">Jquery V 1.12.4</a>)</li>
+                <li> CSS / SASS </li>
+                <li> Sliders: <a href="https://kenwheeler.github.io/slick/">Slick JS</a></li>
+                <li> Validaciones: <a href="https://jqueryvalidation.org/">Jquery Validate</a></li>
+                <li>Autocomplete: <a href="https://twitter.github.io/typeahead.js/">Typeahead.js</a></li>
+            </p>
+            <h4 id="para-editar-sass-css-javascript-e-imagenes">Edición Sass/CSS, JavaScript e imágenes</h4>
 <pre>
 <code>
 <span class="code">.git</span>
@@ -241,9 +186,9 @@
 </pre>
             <p>Para editar los estilos, en los proyectos nuevos se debe trabajar sobre la carpeta <span class="code">sass</span>. Allí se encuentran los archivos Sass que serán compilados automáticamente en un solo archivo CSS, que será guardado en la carpeta css.</p>
 
-            <p>Para que los archivos Sass se compilen, es necesario tener instalado en el equipo un cliente de Sass. Actualmente se utiliza <a href="https://sass-lang.com/ruby-sass" target="_blank">Ruby Sass</a>, pero se recomienda dejar de usarlo porque está a punto de ser abandonado por sus desarrolladores. Si se elige esta opción, para compilar el Sass hay que abrir la línea de comandos, ubicarse en <span class="code">public_html/public</span> y ejecutar <span class="code">sass --watch sass:css</span>. Quedará corriendo un proceso que compilará los archivos automáticamente cada vez que los modifiquemos.</p>
+            <p>Para que los archivos Sass se compilen, es necesario tener instalado en el equipo un cliente de Sass. Actualmente se utiliza <a href="https://sass-lang.com/ruby-sass" target="_blank">Ruby Sass</a>, pero no es recomendable pues esta deprecada. Si se elige esta opción, para compilar el Sass hay que abrir la línea de comandos, ubicarse en <span class="code">public_html/public</span> y ejecutar <span class="code">sass --watch sass:css</span>. Quedará corriendo un proceso que compilará los archivos automáticamente cada vez que los modifiquemos.</p>
 
-            <h2 id="el-framework">El framework</h2>
+            <h3 id="framework">El framework</h3>
 
             <p>Desde mediados de 2017, las interfaces de las tiendas Simbel se realizan sobre un <em>framework</em> de desarrollo <em>front-end</em> creado especialmente para la plataforma e inspirado en Bootstrap, que era la herramienta que se aplicaba hasta entonces. El nuevo sistema busca proveer una solución más liviana y flexible, ajustada a las necesidades particulares de nuestras tiendas, y aprovechar las características más modernas de CSS (como Bootstrap 4) sin dejar de garantizar una buena compatibilidad con navegadores antiguos (como Bootstrap 3).</p>
 
@@ -254,7 +199,7 @@
             <p>En este documento se utilizará como ejemplo el <em>framework</em> de <a href="https://www.murillo666.com.ar/" target="_blank">Murillo 666</a>.</p>
 
 
-            <h3 id="sistema-de-archivos">Sistema de archivos</h3>
+            <h4 id="sistema-de-archivos">Sistema de archivos</h4>
 
             <p>El <em>framework</em> está ubicado en la carpeta <span class="code">public</span>. A continuación se detallan los archivos que lo componen:</p>
 <pre>
@@ -294,7 +239,7 @@
 <span class="code">README.md</span>
 </code>
 </pre>
-            <h3 id="sistema-de-grilla">Sistema de grilla</h3>
+            <h4 id="sistema-de-grilla">Sistema de grilla</h4>
 
             <p>El sistema de grilla utiliza una nomenclatura similar a la de Bootstrap. Está construido mayormente en flexbox, pero también brinda <em>fallbacks</em> para navegadores que no soporten ese módulo.</p>
 
@@ -648,11 +593,9 @@
             <h3 id="recomendaciones">Recomendaciones</h3>
 
             <ol>
-                <li>Rara vez será necesario crear componentes desde cero. El <em>framework</em> ya viene con implementaciones propias de componentes como modales, desplegables, menús de navegación y <em>scrollspy</em>, entre otros. Si en el diseño se pide un componente que parece no haber sido implementado, preguntar por un proyecto que sí lo tenga, revisar su markup y buscar algo similar en el código del proyecto actual. Seguramente ya esté hecho en algún lugar.</li>
+                <li>No debiera ser necesario crear componentes desde cero. El <em>framework</em> ya viene con implementaciones propias de componentes como modales, desplegables, menús de navegación y <em>scrollspy</em>, entre otros.</li>
 
-                <li>Por lo expresado en el punto 1, en general tampoco será necesario incorporar <em>plugins</em>.</li>
-
-                <li>Si se va a modificar algún componente, ser cuidadoso a la hora de cambiar clases o ID (o directamente ni cambiarlos), ya que probablemente estos se utilicen como selector en alguna función de JavaScript.</li>
+                <li>Si se va a modificar algún componente, ser cuidadoso a la hora de cambiar clases o ID (o directamente no cambiarlos), ya que probablemente estos se utilicen como selector en alguna función de JavaScript.</li>
 
                 <li>Los nombres de clases, mixins, funciones y otros elementos del código están en inglés, que es el idioma convencional de la programación. Sería ideal no romper esa regla.</li>
             </ol>
